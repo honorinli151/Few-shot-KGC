@@ -26,6 +26,7 @@ def training(train_dataset, dev_dataset, test_dataset, model, hyp):
     loss_items = defaultdict(float)
 
     for epoch in range(hyp.existing_epoch + 1, hyp.max_epoch + 1):
+        # ? What the fuck is meta_train
         loss = model.meta_train(train_dataset)
         for name, val in loss.items():
             loss_items[name] += val 
@@ -80,6 +81,7 @@ def run(hyp):
 
 if __name__ == "__main__":
     np.set_printoptions(threshold = np.inf)
+    # Interesting ways to import arguments
     hyp = init_hyp()
 
     logger = init_logger(hyp)
